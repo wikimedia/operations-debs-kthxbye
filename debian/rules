@@ -1,0 +1,12 @@
+#!/usr/bin/make -f
+
+export DH_VERBOSE=1
+export HOME=/tmp/kthxbye
+export GOPATH=/tmp/kthxbye/go
+
+%:
+	dh $@ --with=systemd
+
+override_dh_auto_install:
+	install -D -m 755 -o root -g root kthxbye debian/kthxbye/usr/bin/kthxbye
+	install -D -m 644 -o root -g root debian/kthxbye.sysusers debian/kthxbye/usr/lib/sysusers.d/kthxbye.conf

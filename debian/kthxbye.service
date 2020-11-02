@@ -1,0 +1,11 @@
+[Unit]
+Description=Acknowledgements for Alertmanager alerts
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=kthxbye
+ExecStart=/usr/bin/kthxbye -alertmanager.uri localhost:9093 -listen localhost:19195
+
+[Install]
+WantedBy=multi-user.target
